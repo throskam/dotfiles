@@ -1,0 +1,46 @@
+{
+	"color_scheme": "Packages/User/Succulent (SL).tmTheme",
+	"contrasted_quick_panel": true,
+	"contrasted_sidebar": true,
+	"contrasted_tabs": true,
+	"default_line_ending": "unix",
+	"folder_exclude_patterns":
+	[
+		"tmp",
+		"node_modules",
+		".tmp",
+		".git",
+		".sass-cache"
+	],
+	"font_face": "Source Code Pro",
+	"font_size": 10,
+	"icon_file_type_enable": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"show_definitions": false,
+	"theme": "Nexus.sublime-theme",
+	"todo":
+	{
+		"file_exclude_patterns":
+		[
+			"*.css",
+			"*.po",
+			"*.mo"
+		],
+		"folder_exclude_patterns":
+		[
+			"static",
+			"vendor",
+			"tmp",
+			"node_modules",
+			".tmp"
+		],
+		"patterns":
+		{
+			"BUG": "BUG[\\s]*?:+(?P<bug>.*)$"
+		}
+	},
+	"trim_trailing_white_space_on_save": true
+}

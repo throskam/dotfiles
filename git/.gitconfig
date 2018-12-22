@@ -1,0 +1,33 @@
+[user]
+    name = throskam
+    email = throskam@gmail.com
+[credential]
+    helper = osxkeychain
+[alias]
+    tree = log --graph --abbrev-commit --decorate --date=relative --format=format:\"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)\" --all
+    history = log --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit
+    meh = "!git commit -m \"$(curl -s whatthecommit.com/index.txt)\""
+    yolo = "!git add -A && git meh"
+    pack = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m \"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+    concat = "!f(){ git rebase -i HEAD~${1}; }; f"
+    unstage = reset HEAD --
+    drop = reset HEAD~1 --hard
+    show-gone-branches = "!git fetch --all -p --quiet; git branch -vv | grep \": gone]\" | awk '{ print $1 }'"
+    delete-gone-branches = "!git show-gone-branches | xargs -r -n 1 git branch -D"
+    lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %cr)%Creset'
+    oups = "!git add .; git commit --amend --no-edit"
+    ram = push -f
+[fetch]
+    prune = true
+[help]
+    autocorrect = 5
+[pull]
+    rebase = true
+[push]
+    default = simple
+[core]
+    editor = vim
+[merge]
+    tool = vimdiff
+[rebase]
+    autosquash = true
