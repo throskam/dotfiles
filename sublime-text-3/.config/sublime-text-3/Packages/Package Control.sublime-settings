@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AlignTab",
+		"API Blueprint",
+		"Better CoffeeScript",
+		"DocBlockr",
+		"EditorConfig",
+		"FileDiffs",
+		"Git",
+		"GitGutter",
+		"Markdown Extended",
+		"MarkdownPreview",
+		"Package Control",
+		"sublime-github",
+		"SublimeLinter-eslint",
+		"SublimeLinter-php",
+		"SublimeLinter-phpcs",
+		"SublimeLinter-phpmd",
+		"SummitLinter",
+		"Theme - Nexus",
+		"Vue Syntax Highlight"
+	]
+}
