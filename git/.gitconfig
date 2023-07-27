@@ -1,0 +1,48 @@
+[user]
+	name = throskam
+	email = throskam@gmail.com
+[credential]
+	helper = osxkeychain
+[alias]
+	clear = "!git clean -d -f -x && git reset --hard"
+	concat = "!f(){ git rebase -i HEAD~${1}; }; f"
+	delete-gone-branches = "!git show-gone-branches | xargs -r -n 1 git branch -D"
+	drop = reset HEAD~1 --hard
+	history = log --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit
+	lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %cr)%Creset'
+	meh = "!git commit -m \"$(curl -s https://whatthecommit.com/index.txt)\""
+	oups = "!git add .; git commit --amend --no-edit"
+	pack = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m \"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+	pickaxe = log -S
+	ram = push --force-with-lease
+	shame = blame -w -C -C -C
+	show-gone-branches = "!git fetch --all -p --quiet; git branch -vv | grep \": gone]\" | awk '{ print $1 }'"
+	tree = log --graph --abbrev-commit --decorate --date=relative --format=format:\"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)\" --all
+	undo = reset --soft HEAD~1
+	unstage = reset HEAD --
+	yolo = "!git add -A && git meh"
+[fetch]
+	prune = true
+[help]
+	autocorrect = 5
+[pull]
+	rebase = true
+[push]
+	default = simple
+[core]
+	editor = nvim
+[merge]
+	tool = vimdiff
+[rebase]
+	autosquash = true
+	updateRefs = true
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = main
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
