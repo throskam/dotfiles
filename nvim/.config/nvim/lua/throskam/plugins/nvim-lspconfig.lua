@@ -25,8 +25,6 @@ return {
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-		-- Use <leader>d instead
-		-- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -67,14 +65,6 @@ return {
 
 		-- Configure eslint.
 		lspconfig.eslint.setup({
-			-- on_attach = function(_, bufnr)
-			-- 	-- Fix on save
-			-- 	vim.api.nvim_create_autocmd("BufWritePre", {
-			--      group = vim.api.nvim_create_augroup("run-eslint-on-save", {}),
-			-- 		buffer = bufnr,
-			-- 		command = "EslintFixAll",
-			-- 	})
-			-- end,
 			capabilities = capabilities,
 		})
 

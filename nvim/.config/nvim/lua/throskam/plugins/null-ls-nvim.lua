@@ -23,26 +23,13 @@ return {
 					return #generators > 0
 				end
 
-				if client.server_capabilities.documentFormattingProvider then
+				if client.supports_method("textDocument/formatting") then
 					if client.name == "null-ls" and is_null_ls_formatting_enabled() or client.name ~= "null-ls" then
 						vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr()"
 					else
 						vim.bo[bufnr].formatexpr = nil
 					end
 				end
-
-				-- if client.supports_method("textDocument/formatting") then
-				-- 	local augroup = vim.api.nvim_create_augroup("lsp-formatting", {})
-				--
-				-- 	-- Format on save
-				-- 	vim.api.nvim_create_autocmd("BufWritePre", {
-				-- 		group = augroup,
-				-- 		buffer = bufnr,
-				-- 		callback = function()
-				-- 			vim.lsp.buf.format({ async = false })
-				-- 		end,
-				-- 	})
-				-- end
 			end,
 		})
 	end,
