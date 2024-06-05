@@ -25,6 +25,9 @@ return {
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+		vim.keymap.set("n", "<leader>ih", function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+		end, { desc = "Toggle Inlay Hints" })
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -61,7 +64,20 @@ return {
 		})
 
 		-- Configure lua-ls
-		lspconfig.lua_ls.setup({})
+		lspconfig.lua_ls.setup({
+			settings = {
+				Lua = {
+					hint = {
+						enable = true,
+						setType = false,
+						paramType = true,
+						paramName = true,
+						semicolon = true,
+						arrayIndex = true,
+					},
+				},
+			},
+		})
 
 		-- Configure eslint.
 		lspconfig.eslint.setup({
@@ -71,6 +87,15 @@ return {
 		-- Configure Typescript
 		lspconfig.tsserver.setup({
 			init_options = {
+				preferences = {
+					includeInlayParameterNameHints = "all",
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayVariableTypeHints = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayEnumMemberValueHints = true,
+				},
 				plugins = {
 					{
 						name = "@vue/typescript-plugin",
@@ -102,17 +127,28 @@ return {
 
 		-- Configure Go
 		lspconfig.gopls.setup({
-			analyses = {
-				shadow = true,
-				unusedvariable = true,
-				unusedwrite = true,
-				useany = true,
+			settings = {
+				gopls = {
+					analyses = {
+						shadow = true,
+						unusedvariable = true,
+						unusedwrite = true,
+						useany = true,
+					},
+					staticcheck = true,
+					gofumpt = true,
+					hints = {
+						assignVariableTypes = true,
+						compositeLiteralFields = true,
+						compositeLiteralTypes = true,
+						constantValues = true,
+						functionTypeParameters = true,
+						parameterNames = true,
+						rangeVariableTypes = true,
+					},
+				},
 			},
-			staticcheck = true,
-			gofumpt = true,
-			hints = {
-				rangeVariableTypes = true,
-			},
+			capabilities = capabilities,
 		})
 
 		-- Configure HTML
