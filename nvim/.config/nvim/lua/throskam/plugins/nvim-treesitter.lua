@@ -10,6 +10,7 @@ return {
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				"css",
+				"go",
 				"html",
 				"javascript",
 				"lua",
