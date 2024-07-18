@@ -61,6 +61,13 @@ vim.api.nvim_create_user_command("JSON", "<line1>,<line2>!jq", {
 	range = true,
 })
 
+-- Format XML command
+vim.api.nvim_create_user_command(
+	"XML",
+	"<line1>,<line2>!python3 -c 'import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())'",
+	{ range = true }
+)
+
 -- Highlight when yanking text.
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
