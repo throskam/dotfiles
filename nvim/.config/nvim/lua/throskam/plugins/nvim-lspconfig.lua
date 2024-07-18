@@ -169,5 +169,11 @@ return {
 			filetypes = { "templ" },
 			capabilities = capabilities,
 		})
+
+		-- Configure JSON
+		lspconfig.jsonls.setup({
+			filetypes = { "json" },
+			capabilities = capabilities,
+		})
 	end,
 }

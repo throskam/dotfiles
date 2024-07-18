@@ -11,6 +11,7 @@ return {
 			"gopls",
 			"html",
 			"htmx",
+			"jsonls",
 			"lua_ls",
 			"templ",
 			"tsserver",
