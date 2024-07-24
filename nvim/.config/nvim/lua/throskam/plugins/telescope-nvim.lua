@@ -3,12 +3,14 @@ return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"nvim-telescope/telescope-live-grep-args.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
 		local config = require("telescope.config")
 		local actions = require("telescope.actions")
 		local builtin = require("telescope.builtin")
+		local lga_actions = require("telescope-live-grep-args.actions")
 
 		-- Clone the default Telescope configuration
 		local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
@@ -35,10 +37,26 @@ return {
 					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
 				},
 			},
+			extensions = {
+				live_grep_args = {
+					mappings = {
+						i = {
+							["<C-k>"] = lga_actions.quote_prompt(),
+							["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+							["<C-space>"] = actions.to_fuzzy_refine,
+						},
+					},
+				},
+			},
 		})
 
 		vim.keymap.set("n", "<leader>p", builtin.find_files, { desc = "Search files" })
-		vim.keymap.set("n", "<leader>f", builtin.live_grep, { desc = "Search by grep" })
+		vim.keymap.set(
+			"n",
+			"<leader>f",
+			telescope.extensions.live_grep_args.live_grep_args,
+			{ desc = "Search by grep" }
+		)
 		vim.keymap.set("n", "<leader>o", builtin.buffers, { desc = "Search buffers" })
 		vim.keymap.set("n", "<leader>?", builtin.help_tags, { desc = "Search help" })
 		vim.keymap.set("n", "<leader>b", builtin.builtin, { desc = "Search Telescope built-in" })
@@ -67,5 +85,7 @@ return {
 				nmap("<leader>lws", builtin.lsp_dynamic_workspace_symbols, "Search workspace symbols")
 			end,
 		})
+
+		telescope.load_extension("live_grep_args")
 	end,
 }
