@@ -7,7 +7,7 @@ return {
 
 		gs.setup({
 			current_line_blame = true,
-			_signs_staged_enable = true,
+			signs_staged_enable = true,
 			on_attach = function(bufnr)
 				local map = function(mode, keys, func, desc, expr)
 					vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc, expr = expr or false })
@@ -50,6 +50,9 @@ return {
 				map("n", "<leader>hp", gs.preview_hunk, "Preview hunk")
 				map("n", "<leader>hb", function()
 					gs.blame_line({ full = false })
+				end, "Blame line")
+				map("n", "<leader>hB", function()
+					gs.blame()
 				end, "Blame line")
 				map("n", "<leader>hd", gs.toggle_deleted, "Toggle deleted hunks")
 				map("n", "<leader>hw", gs.toggle_word_diff, "Toggle word diff")
