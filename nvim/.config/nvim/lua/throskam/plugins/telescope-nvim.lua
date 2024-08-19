@@ -41,8 +41,7 @@ return {
 				live_grep_args = {
 					mappings = {
 						i = {
-							["<C-k>"] = lga_actions.quote_prompt(),
-							["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+							["<C-y>"] = lga_actions.quote_prompt(),
 							["<C-space>"] = actions.to_fuzzy_refine,
 						},
 					},
