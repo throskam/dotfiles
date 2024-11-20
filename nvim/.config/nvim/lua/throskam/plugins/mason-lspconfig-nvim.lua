@@ -15,7 +15,7 @@ return {
 			"jsonls",
 			"lua_ls",
 			"templ",
-			"tsserver",
+			"ts_ls",
 			"volar",
 		},
 		-- TODO: this should work but it doesn't
