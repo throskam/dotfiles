@@ -44,7 +44,7 @@ return {
 				nmap("<leader>ca", vim.lsp.buf.code_action, "Run code action")
 				nmap("gd", vim.lsp.buf.definition, "Goto definition")
 				nmap("gI", vim.lsp.buf.implementation, "Goto implementation")
-				nmap("<leader>D", vim.lsp.buf.type_definition, "Goto type definition")
+				nmap("gT", vim.lsp.buf.type_definition, "Goto type definition")
 
 				-- See `:help K` for why this keymap
 				nmap("K", vim.lsp.buf.hover, "Hover Documentation")

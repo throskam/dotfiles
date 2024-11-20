@@ -79,7 +79,7 @@ return {
 
 				-- Buffer local mappings.
 				nmap("gr", builtin.lsp_references, "Search LSP references")
-				nmap("<leader>d", builtin.diagnostics, "Search diagnostics")
+				nmap("<leader>i", builtin.diagnostics, "Search diagnostics")
 				nmap("<leader>lds", builtin.lsp_document_symbols, "Search buffer symbols")
 				nmap("<leader>lws", builtin.lsp_dynamic_workspace_symbols, "Search workspace symbols")
 			end,
