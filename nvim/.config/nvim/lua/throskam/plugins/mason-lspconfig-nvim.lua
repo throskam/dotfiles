@@ -7,6 +7,7 @@ return {
 	lazy = true,
 	opts = {
 		ensure_installed = {
+			"emmet_language_server",
 			"eslint",
 			"gopls",
 			"html",

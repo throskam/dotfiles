@@ -175,5 +175,22 @@ return {
 			filetypes = { "json" },
 			capabilities = capabilities,
 		})
+
+		-- Configure Emmet
+		lspconfig.emmet_language_server.setup({
+			filetypes = {
+				"css",
+				"eruby",
+				"html",
+				"javascript",
+				"javascriptreact",
+				"less",
+				"pug",
+				"sass",
+				"scss",
+				"templ",
+				"typescriptreact",
+			},
+		})
 	end,
 }
