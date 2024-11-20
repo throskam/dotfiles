@@ -23,5 +23,23 @@ return {
 				restart = true,
 			},
 		}
+
+		dap.adapters.go = {
+			type = "server",
+			port = 2345,
+		}
+
+		dap.configurations.go = {
+			{
+				name = "Go Remote Attach",
+				type = "go",
+				request = "attach",
+				mode = "remote",
+				substitutepath = { {
+					from = "${workspaceFolder}",
+					to = "/opt/app",
+				} },
+			},
+		}
 	end,
 }
