@@ -6,7 +6,6 @@ return {
 	-- https://github.com/nvim-treesitter/nvim-treesitter/issues/3092
 	build = ":TSUpdate",
 	config = function()
-		-- TODO: check this https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua#L314
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				"css",
@@ -15,7 +14,6 @@ return {
 				"javascript",
 				"lua",
 				"scss",
-				"templ",
 				"typescript",
 				"vim",
 				"vimdoc",

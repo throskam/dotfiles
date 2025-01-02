@@ -77,6 +77,7 @@ return {
 					},
 				},
 			},
+			capabilities,
 		})
 
 		-- Configure eslint.
@@ -153,7 +154,7 @@ return {
 
 		-- Configure HTML
 		lspconfig.html.setup({
-			filetypes = { "html", "templ" },
+			filetypes = { "html" },
 			settings = {
 				html = {
 					format = {
@@ -167,19 +168,6 @@ return {
 					},
 				},
 			},
-			capabilities = capabilities,
-		})
-
-		-- Configure HTMLX
-		lspconfig.htmx.setup({
-			filetypes = { "html", "templ" },
-			capabilities = capabilities,
-		})
-
-		-- Configure Templ
-		vim.filetype.add({ extension = { templ = "templ" } })
-		lspconfig.templ.setup({
-			filetypes = { "templ" },
 			capabilities = capabilities,
 		})
 
@@ -201,9 +189,9 @@ return {
 				"pug",
 				"sass",
 				"scss",
-				"templ",
 				"typescriptreact",
 			},
+			capabilities,
 		})
 	end,
 }

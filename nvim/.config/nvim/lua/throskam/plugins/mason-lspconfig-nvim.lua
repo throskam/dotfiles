@@ -11,15 +11,10 @@ return {
 			"eslint",
 			"gopls",
 			"html",
-			"htmx",
 			"jsonls",
 			"lua_ls",
-			"templ",
 			"ts_ls",
 			"volar",
 		},
-		-- TODO: this should work but it doesn't
-		-- ensure_installed = nil,
-		-- automatic_installation = true,
 	},
 }
