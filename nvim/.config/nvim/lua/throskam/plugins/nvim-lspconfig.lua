@@ -5,8 +5,6 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		-- Useful status updates for LSP.
 		{ "j-hui/fidget.nvim", tag = "legacy", opts = {} },
-		-- Additional lua configuration.
-		{ "folke/neodev.nvim", opts = {} },
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
@@ -55,7 +53,7 @@ return {
 				nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace add folder")
 				nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace remove folder")
 				nmap("<leader>wl", function()
-					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+					vim.print(vim.lsp.buf.list_workspace_folders())
 				end, "Workspace list folders")
 				nmap("<leader>gq", function()
 					vim.lsp.buf.format({ async = false })
@@ -65,6 +63,27 @@ return {
 
 		-- Configure lua-ls
 		lspconfig.lua_ls.setup({
+			on_init = function(client)
+				if client.workspace_folders then
+					local path = client.workspace_folders[1].name
+					---@diagnostic disable-next-line: undefined-field
+					if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+						return
+					end
+				end
+
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						version = "LuaJIT",
+					},
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+						},
+					},
+				})
+			end,
 			settings = {
 				Lua = {
 					hint = {
