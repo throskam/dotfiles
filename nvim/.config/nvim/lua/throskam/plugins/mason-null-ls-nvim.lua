@@ -1,5 +1,6 @@
 -- Automatic non-LSP installation
 return {
+	enabled = false,
 	"jay-babu/mason-null-ls.nvim",
 	dependencies = {
 		"williamboman/mason.nvim",

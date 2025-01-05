@@ -1,5 +1,6 @@
 -- Simulate non-LSP as LSP
 return {
+	enabled = false,
 	"jose-elias-alvarez/null-ls.nvim",
 	dependencies = {
 		"jay-babu/mason-null-ls.nvim",

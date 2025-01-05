@@ -24,14 +24,14 @@ Choose your preferred shell.
 
 #### Zsh
 
-1. Use `stowsh` to configure `zsh`. 
+1. Use `stowsh` to configure `zsh`.
 
 ```bash
 .dotfiles/stowsh .dotfiles/zsh
 ```
 
 2. Install `zsh` using your package manager.
-3. Install the dependencies.
+1. Install the dependencies.
 
 - [Oh My Posh](https://ohmyposh.dev/docs/installation/linux)
 - [Oh My Zsh!](https://ohmyz.sh/#install)
@@ -47,14 +47,14 @@ chsh -s $(which zsh)
 
 #### Fish
 
-1. Use `stowsh` to configure `fish`. 
+1. Use `stowsh` to configure `fish`.
 
 ```bash
 .dotfiles/stowsh .dotfiles/fish
 ```
 
 2. Install `fish` using your package manager.
-3. Install the dependencies.
+1. Install the dependencies.
 
 - [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish?tab=readme-ov-file#installation)
 
@@ -74,7 +74,7 @@ stowsh <module-name>
 
 Replace `<module-name>` with the appropriate module you wish to configure.
 
-> [!NOTE]  
+> [!NOTE]
 > Run this step before installing any packages to avoid creating default configurations that might create conflicts.
 
 ### 4. Install Packages
