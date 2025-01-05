@@ -14,11 +14,12 @@ alias vim="nvim"
 alias svim="vim (git ls-files -mo --exclude-standard)"
 
 # Oh My Zsh!
-export ZSH="$XDG_DATA_HOME/oh-my-zsh/" 
+export ZSH="$XDG_DATA_HOME/oh-my-zsh" 
 export ZSH_CUSTOM="$XDG_DATA_HOME/zsh"
 
 plugins=(
 	git
+	stowsh
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
