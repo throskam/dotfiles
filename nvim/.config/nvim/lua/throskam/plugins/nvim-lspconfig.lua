@@ -18,49 +18,6 @@ return {
 			},
 		}
 
-		-- Global mappings.
-		-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-		vim.keymap.set("n", "<leader>ih", function()
-			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-		end, { desc = "Toggle Inlay Hints" })
-
-		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-			callback = function(ev)
-				local bufnr = ev.buf
-
-				local nmap = function(keys, func, desc)
-					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-				end
-
-				-- Buffer local mappings.
-				-- See `:help vim.lsp.*` for documentation on any of the below functions
-				nmap("<leader>rn", vim.lsp.buf.rename, "Rename variable under the cursor")
-				nmap("<leader>ca", vim.lsp.buf.code_action, "Run code action")
-				nmap("gd", vim.lsp.buf.definition, "Goto definition")
-				nmap("gI", vim.lsp.buf.implementation, "Goto implementation")
-				nmap("gT", vim.lsp.buf.type_definition, "Goto type definition")
-
-				-- See `:help K` for why this keymap
-				nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-				nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-
-				-- Lesser used LSP functionality
-				nmap("gD", vim.lsp.buf.declaration, "Goto Declaration")
-				nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "Workspace add folder")
-				nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "Workspace remove folder")
-				nmap("<leader>wl", function()
-					vim.print(vim.lsp.buf.list_workspace_folders())
-				end, "Workspace list folders")
-				nmap("<leader>gq", function()
-					vim.lsp.buf.format({ async = false })
-				end, "Format Buffer")
-			end,
-		})
-
 		-- Configure lua-ls
 		lspconfig.lua_ls.setup({
 			on_init = function(client)
@@ -211,6 +168,43 @@ return {
 				"typescriptreact",
 			},
 			capabilities,
+		})
+
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			callback = function(ev)
+				local bufnr = ev.buf
+
+				local nmap = function(keys, func, desc)
+					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+				end
+
+				-- Improve default nvim mappings
+				nmap("gd", vim.lsp.buf.definition, "Goto definition")
+
+				-- Goto
+				nmap("<leader>lgi", vim.lsp.buf.implementation, "Goto implementation")
+				nmap("<leader>lgt", vim.lsp.buf.type_definition, "Goto type definition")
+				nmap("<leader>lgd", vim.lsp.buf.declaration, "Goto declaration")
+
+				-- LSP features
+				nmap("<leader>lrn", vim.lsp.buf.rename, "Rename variable under the cursor")
+				nmap("<leader>lca", vim.lsp.buf.code_action, "Run code action")
+				nmap("<leader>lk", vim.lsp.buf.signature_help, "Signature documentation")
+				nmap("<leader>lgq", function()
+					vim.lsp.buf.format({ async = false })
+				end, "Format Buffer")
+				vim.keymap.set("n", "<leader>lih", function()
+					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+				end, { desc = "Toggle Inlay Hints" })
+
+				-- Workspaces
+				nmap("<leader>lwa", vim.lsp.buf.add_workspace_folder, "Workspace add folder")
+				nmap("<leader>lwr", vim.lsp.buf.remove_workspace_folder, "Workspace remove folder")
+				nmap("<leader>lwl", function()
+					vim.print(vim.lsp.buf.list_workspace_folders())
+				end, "Workspace list folders")
+			end,
 		})
 	end,
 }

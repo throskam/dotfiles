@@ -11,23 +11,23 @@ return {
 
 		dapui.setup()
 
-		vim.keymap.set({ "n", "v" }, "<Leader>de", function()
+		vim.keymap.set({ "n", "v" }, "<leader>de", function()
 			dapui.eval(nil, { enter = true })
 		end, { desc = "DAP UI eval" })
 
-		vim.keymap.set("n", "<Leader>ds", function()
+		vim.keymap.set("n", "<leader>ds", function()
 			dapui.float_element("scopes", { enter = true })
 		end, { desc = "DAP UI scopes" })
 
-		vim.keymap.set("n", "<Leader>dw", function()
+		vim.keymap.set("n", "<leader>dw", function()
 			dapui.float_element("watches", { enter = true })
 		end, { desc = "DAP UI watches" })
 
-		vim.keymap.set("n", "<Leader>db", function()
+		vim.keymap.set("n", "<leader>db", function()
 			dapui.float_element("breakpoints", { enter = true })
 		end, { desc = "DAP UI breakpoints" })
 
-		vim.keymap.set("n", "<Leader>df", function()
+		vim.keymap.set("n", "<leader>df", function()
 			dapui.float_element("frames", { enter = true })
 		end, { desc = "DAP UI frames" })
 	end,

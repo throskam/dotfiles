@@ -1,12 +1,12 @@
 -- Session
 return {
 	"echasnovski/mini.sessions",
+	keys = { "<leader>sc", "<leader>sd", "<leader>sl"},
 	config = function()
 		local sessions = require("mini.sessions")
 
 		sessions.setup()
 
-		-- vim.keymap.set("n", "<leader>sc", '<Cmd>lua MiniSessions.write(vim.ui.input("Session Name > "))<CR>')
 		vim.keymap.set("n", "<leader>sc", function()
 			vim.ui.input({
 				prompt = "Session name",

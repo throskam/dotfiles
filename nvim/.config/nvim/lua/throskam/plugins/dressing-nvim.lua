@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
 	},
+	event = { "VeryLazy" },
 	config = function()
 		require("dressing").setup({
 			input = {

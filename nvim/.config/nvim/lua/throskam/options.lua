@@ -12,7 +12,7 @@ vim.opt.smartindent = true
 -- Invisible chars
 vim.opt.listchars:append({ eol = "¬", tab = ">.", trail = "~", precedes = "<", space = "␣", nbsp = "+" })
 
--- Avoid breaking the line at the last character, but rather at a 'breakat' character.
+-- Avoid breaking the line at the last character, but rather at a 'breakat' character
 vim.opt.linebreak = true
 
 -- Set relative line numbering
@@ -53,26 +53,8 @@ vim.opt.swapfile = false
 -- Clipboard
 vim.opt.clipboard = "unnamedplus"
 
--- Minimum number of line above and below cursor.
+-- Minimum number of line above and below cursor
 vim.opt.scrolloff = 7
 
--- Format JSON command
-vim.api.nvim_create_user_command("JSON", "<line1>,<line2>!jq", {
-	range = true,
-})
-
--- Format XML command
-vim.api.nvim_create_user_command(
-	"XML",
-	"<line1>,<line2>!python3 -c 'import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())'",
-	{ range = true }
-)
-
--- Highlight when yanking text.
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("highlight-yank", {}),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
+-- Set the leqder to ","
+vim.g.mapleader = ","

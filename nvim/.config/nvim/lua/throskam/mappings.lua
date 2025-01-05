@@ -1,12 +1,6 @@
-vim.g.mapleader = ","
-
-vim.keymap.set("n", "<leader>w", ":w!<cr>", { desc = "Save" })
-vim.keymap.set("n", "<leader>cd", ":cd %:p:h<cr>:pwd<cr>", { desc = "cd $PWD" })
-vim.keymap.set("n", "<leader>,", ":noh<cr>", { desc = "Remove search highlights" })
-vim.keymap.set(
-	"n",
-	"<leader><cr>",
-	[[mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm]],
-	{ silent = true, desc = "Replace Windows new lines by UNIX new lines" }
-)
-vim.keymap.set("n", "<leader><space>", [[:%s/\s\+$//e<cr>]], { silent = true, desc = "Remove trailing space" })
+vim.keymap.set("n", "<leader>,", [[:w<cr>]], { silent = true, desc = "Save" })
+vim.keymap.set("n", "<leader>.", [[:noh<cr>]], { silent = true, desc = "Remove search highlights" })
+vim.keymap.set("n", "<leader>x", [[:bd<cr>]], { silent = true, desc = "Save" })
+vim.keymap.set("n", "<leader>c", [[:close<cr>]], { silent = true, desc = "Save" })
+vim.keymap.set("n", "<leader>q", [[:q<cr>]], { silent = true, desc = "Save" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
