@@ -134,7 +134,6 @@ return {
 
 		-- Configure HTML
 		lspconfig.html.setup({
-			filetypes = { "html" },
 			settings = {
 				html = {
 					format = {
@@ -153,24 +152,11 @@ return {
 
 		-- Configure JSON
 		lspconfig.jsonls.setup({
-			filetypes = { "json" },
 			capabilities = capabilities,
 		})
 
 		-- Configure Emmet
 		lspconfig.emmet_language_server.setup({
-			filetypes = {
-				"css",
-				"eruby",
-				"html",
-				"javascript",
-				"javascriptreact",
-				"less",
-				"pug",
-				"sass",
-				"scss",
-				"typescriptreact",
-			},
 			capabilities,
 		})
 
