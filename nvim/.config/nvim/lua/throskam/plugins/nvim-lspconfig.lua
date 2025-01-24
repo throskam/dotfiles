@@ -155,6 +155,11 @@ return {
 			capabilities = capabilities,
 		})
 
+		-- Configure CSS
+		lspconfig.cssls.setup({
+			capabilities = capabilities,
+		})
+
 		-- Configure Emmet
 		lspconfig.emmet_language_server.setup({
 			capabilities,
