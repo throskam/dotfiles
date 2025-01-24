@@ -107,12 +107,14 @@ return {
 			settings = {
 				gopls = {
 					analyses = {
+						nilness = true,
 						shadow = true,
+						unusedparams = true,
 						unusedvariable = true,
 						unusedwrite = true,
 						useany = true,
 					},
-					staticcheck = true,
+					completeUnimported = true,
 					gofumpt = true,
 					hints = {
 						assignVariableTypes = true,
@@ -123,6 +125,8 @@ return {
 						parameterNames = true,
 						rangeVariableTypes = true,
 					},
+					staticcheck = true,
+					usePlaceholders = true,
 				},
 			},
 			capabilities = capabilities,
