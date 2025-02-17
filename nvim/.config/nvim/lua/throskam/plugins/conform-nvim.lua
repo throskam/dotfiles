@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"zapling/mason-conform.nvim",
 	},
-	ft = { "lua", "javascript", "mdformat" },
+	event = { "BufReadPre", "BufNewFile" },
 	init = function()
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 	end,
