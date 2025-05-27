@@ -1,4 +1,4 @@
--- Automatic DAP adapters installation
+-- Install DAP adapters.
 return {
 	"jay-babu/mason-nvim-dap.nvim",
 	dependencies = {
@@ -6,8 +6,5 @@ return {
 		"mfussenegger/nvim-dap",
 	},
 	event = { "BufReadPre", "BufNewFile" },
-	opts = {
-		ensure_installed = { "node2" },
-		handlers = {},
-	},
+	opts = {},
 }
