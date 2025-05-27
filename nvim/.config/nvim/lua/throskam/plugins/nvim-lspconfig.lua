@@ -2,13 +2,12 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		-- Useful status updates for LSP.
 		{ "j-hui/fidget.nvim", tag = "legacy", opts = {} },
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local lspconfig = require("lspconfig")
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		-- Watch files for new types.
@@ -18,150 +17,7 @@ return {
 			},
 		}
 
-		-- Configure lua-ls
-		lspconfig.lua_ls.setup({
-			on_init = function(client)
-				if client.workspace_folders then
-					local path = client.workspace_folders[1].name
-					---@diagnostic disable-next-line: undefined-field
-					if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
-						return
-					end
-				end
-
-				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-					runtime = {
-						version = "LuaJIT",
-					},
-					workspace = {
-						checkThirdParty = false,
-						library = {
-							vim.env.VIMRUNTIME,
-						},
-					},
-				})
-			end,
-			settings = {
-				Lua = {
-					hint = {
-						enable = true,
-						setType = false,
-						paramType = true,
-						paramName = true,
-						semicolon = true,
-						arrayIndex = true,
-					},
-				},
-			},
-			capabilities,
-		})
-
-		-- Configure eslint.
-		lspconfig.eslint.setup({
-			capabilities = capabilities,
-		})
-
-		-- Configure Typescript
-		lspconfig.ts_ls.setup({
-			init_options = {
-				preferences = {
-					includeInlayParameterNameHints = "all",
-					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-					includeInlayFunctionParameterTypeHints = true,
-					includeInlayVariableTypeHints = true,
-					includeInlayPropertyDeclarationTypeHints = true,
-					includeInlayFunctionLikeReturnTypeHints = true,
-					includeInlayEnumMemberValueHints = true,
-				},
-				plugins = {
-					{
-						name = "@vue/typescript-plugin",
-						-- Get the vue plugin installed by mason
-						location = require("mason-registry").get_package("vue-language-server"):get_install_path()
-							.. "/node_modules/@vue/language-server",
-						languages = { "vue" },
-					},
-				},
-			},
-			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-			on_attach = function(client)
-				-- Avoid conflict with formatters.
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end,
-			capabilities = capabilities,
-		})
-
-		-- Configure Vue
-		lspconfig.volar.setup({
-			on_attach = function(client)
-				-- Avoid conflict with formatters.
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end,
-			capabilities = capabilities,
-		})
-
-		-- Configure Go
-		lspconfig.gopls.setup({
-			settings = {
-				gopls = {
-					analyses = {
-						nilness = true,
-						shadow = true,
-						unusedparams = true,
-						unusedvariable = true,
-						unusedwrite = true,
-						useany = true,
-					},
-					completeUnimported = true,
-					gofumpt = true,
-					hints = {
-						assignVariableTypes = true,
-						compositeLiteralFields = true,
-						compositeLiteralTypes = true,
-						constantValues = true,
-						functionTypeParameters = true,
-						parameterNames = true,
-						rangeVariableTypes = true,
-					},
-					staticcheck = true,
-					usePlaceholders = true,
-				},
-			},
-			capabilities = capabilities,
-		})
-
-		-- Configure HTML
-		lspconfig.html.setup({
-			settings = {
-				html = {
-					format = {
-						templating = true,
-						wrapLineLength = 120,
-						wrapAttributes = "auto",
-					},
-					hover = {
-						documentation = true,
-						references = true,
-					},
-				},
-			},
-			capabilities = capabilities,
-		})
-
-		-- Configure JSON
-		lspconfig.jsonls.setup({
-			capabilities = capabilities,
-		})
-
-		-- Configure CSS
-		lspconfig.cssls.setup({
-			capabilities = capabilities,
-		})
-
-		-- Configure Emmet
-		lspconfig.emmet_language_server.setup({
+		vim.lsp.config("*", {
 			capabilities,
 		})
 

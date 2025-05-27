@@ -1,8 +1,8 @@
--- Ensure LSP presence and help configure them
+-- Install LSP servers.
 return {
-	"williamboman/mason-lspconfig.nvim",
+	"mason-org/mason-lspconfig.nvim",
 	dependencies = {
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 	},
 	lazy = true,
 	opts = {
@@ -15,7 +15,7 @@ return {
 			"jsonls",
 			"lua_ls",
 			"ts_ls",
-			"volar",
+			"vue_ls",
 		},
 	},
 }
