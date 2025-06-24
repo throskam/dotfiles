@@ -13,6 +13,8 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				javascript = { "prettierd" },
+				typescript = { "prettierd" },
+				typescriptreact = { "prettierd" },
 				markdown = { "mdformat" },
 			},
 			format_on_save = {
