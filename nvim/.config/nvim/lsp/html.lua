@@ -2,7 +2,7 @@ return {
 	settings = {
 		html = {
 			format = {
-				wrapAttributes = "force-expand-multiline",
+				wrapAttributes = "none",
 			},
 		},
 	},
