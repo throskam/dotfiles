@@ -8,7 +8,7 @@ alias c="clear"
 alias q="cd && c"
 alias e="exit"
 alias vim="nvim"
-alias svim="vim (git ls-files -mo --exclude-standard)"
+alias svim="vim \$(git ls-files -mo --exclude-standard)"
 
 # Oh My Zsh!
 export ZSH="$XDG_DATA_HOME/oh-my-zsh" 
