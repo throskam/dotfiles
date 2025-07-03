@@ -1,6 +1,3 @@
-# Use Vi key bindings
-bindkey -v
-
 # Enable history
 HISTFILE="$XDG_DATA_HOME/zsh/histfile"
 HISTSIZE=1000
@@ -17,11 +14,17 @@ alias svim="vim (git ls-files -mo --exclude-standard)"
 export ZSH="$XDG_DATA_HOME/oh-my-zsh" 
 export ZSH_CUSTOM="$XDG_DATA_HOME/zsh"
 
+# Vi Mode
+function zvm_config() {
+	ZVM_CURSOR_STYLE_ENABLED=false
+}
+
 plugins=(
 	git
 	stowsh
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+	zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -38,6 +38,7 @@ Choose your preferred shell.
 - [Zoxide](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation)
 - [Zsh Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
 - [Zsh Syntax Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+- [Zsh Vi Mode](https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#as-an-oh-my-zsh-custom-plugin)
 
 4. Make `zsh` the default shell.
 
