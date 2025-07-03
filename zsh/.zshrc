@@ -39,4 +39,4 @@ eval "$(zoxide init zsh)"
 
 # Oh My Posh
 eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/quick-term.omp.json)"
-# eval "$(oh-my-posh init zsh --config $HOME/.oh-my-posh/marcduiker.omp.json)"
+# eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/spaceship.omp.json)"
