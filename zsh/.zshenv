@@ -18,3 +18,4 @@ export PATH=$PATH:/usr/local/go/bin
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export PATH=$PATH:$CARGO_HOME/bin
+. "$CARGO_HOME/env"
