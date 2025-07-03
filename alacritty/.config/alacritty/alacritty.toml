@@ -1,3 +1,7 @@
-[font]
+import = [
+	"~/.config/alacritty/themes/catppuccin-mocha.toml"
+]
 
+[font]
 normal.family = "SauceCodePro NFM"
+
