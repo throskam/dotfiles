@@ -9,6 +9,7 @@ alias q="cd && c"
 alias e="exit"
 alias vim="nvim"
 alias svim="vim \$(git ls-files -mo --exclude-standard)"
+alias tp="open_tmux_project"
 
 # Oh My Zsh!
 export ZSH="$XDG_DATA_HOME/oh-my-zsh" 
@@ -22,6 +23,7 @@ function zvm_config() {
 plugins=(
 	git
 	stowsh
+	tmux-project-opener
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	zsh-vi-mode
