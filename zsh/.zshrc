@@ -16,6 +16,9 @@ alias ompts="switch_omp_theme"
 export ZSH="$XDG_DATA_HOME/oh-my-zsh" 
 export ZSH_CUSTOM="$XDG_DATA_HOME/zsh"
 
+# TMUX
+export ZSH_TMUX_AUTOSTART=true
+
 # Vi Mode
 function zvm_config() {
 	ZVM_CURSOR_STYLE_ENABLED=false
@@ -23,9 +26,10 @@ function zvm_config() {
 
 plugins=(
 	git
-	stowsh
-	tmux-project-opener
 	omp-theme-switcher
+	stowsh
+	tmux
+	tmux-project-opener
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	zsh-vi-mode
