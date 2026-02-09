@@ -8,6 +8,7 @@ return {
 			includeInlayPropertyDeclarationTypeHints = true,
 			includeInlayFunctionLikeReturnTypeHints = true,
 			includeInlayEnumMemberValueHints = true,
+			importModuleSpecifierPreference = "project-relative",
 		},
 		plugins = {
 			{
