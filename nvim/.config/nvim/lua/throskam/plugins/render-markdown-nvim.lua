@@ -1,3 +1,4 @@
+-- Render markdown
 return {
 	"MeanderingProgrammer/render-markdown.nvim",
 	dependencies = {
