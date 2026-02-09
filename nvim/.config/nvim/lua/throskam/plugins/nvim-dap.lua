@@ -10,10 +10,10 @@ return {
 				name = "Node Attach",
 				type = "node2",
 				request = "attach",
-				address = "localhost",
+				address = "0.0.0.0",
 				port = 9229,
 				localRoot = "${workspaceFolder}",
-				remoteRoot = "/home/node/app",
+				remoteRoot = "/workspace",
 				restart = true,
 			},
 		}
