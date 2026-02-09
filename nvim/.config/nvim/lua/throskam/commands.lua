@@ -21,3 +21,11 @@ vim.api.nvim_create_user_command(
 	[[%s/\s\+$//e]],
 	{ desc = "Remove trailing spaces from the entire file" }
 )
+
+vim.api.nvim_create_user_command("Base64Encode", function(opts)
+	vim.cmd("c<c-r>=system('base64',          @\")<cr><esc>")
+end, { range = true, desc = "Encode Base64 text" })
+
+vim.api.nvim_create_user_command("Base64Decode", function(opts)
+	vim.cmd("c<c-r>=system('base64 --decode', @\")<cr><esc>")
+end, { range = true, desc = "Decode Base64 text" })
