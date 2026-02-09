@@ -19,11 +19,6 @@ export ZSH_CUSTOM="$XDG_DATA_HOME/zsh"
 # TMUX
 export ZSH_TMUX_AUTOSTART=true
 
-# Vi Mode
-function zvm_config() {
-	ZVM_CURSOR_STYLE_ENABLED=false
-}
-
 plugins=(
 	git
 	omp-theme-switcher
@@ -32,7 +27,6 @@ plugins=(
 	tmux-project-opener
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
