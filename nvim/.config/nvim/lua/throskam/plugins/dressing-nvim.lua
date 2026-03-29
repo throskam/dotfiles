@@ -1,4 +1,4 @@
--- Overwrite vimsui.select and vim.ui.input with prettier alternative
+-- Overwrite vim.ui.select and vim.ui.input with prettier alternative
 return {
 	"stevearc/dressing.nvim",
 	dependencies = {
