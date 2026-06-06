@@ -1,7 +1,7 @@
 -- Theme catppuccin
 return {
 	"catppuccin/nvim",
-	lazy = true,
+	priority = 1000,
 	config = function()
 		require("catppuccin").setup({
 			flavor = "mocha",

@@ -1,5 +1,5 @@
 -- Theme Oceanic Next
 return {
 	"mhartington/oceanic-next",
-	lazy = true,
+	priority = 1000,
 }

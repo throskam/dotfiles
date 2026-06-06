@@ -1,7 +1,7 @@
 -- Theme Material
 return {
 	"marko-cerovac/material.nvim",
-	lazy = true,
+	priority = 1000,
 	config = function()
 		local material = require("material")
 
