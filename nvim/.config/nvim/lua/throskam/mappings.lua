@@ -6,6 +6,7 @@ vim.keymap.set("n", "<leader>c", [[:close<cr>]], { silent = true, desc = "Close"
 vim.keymap.set("n", "<leader>q", [[:q<cr>]], { silent = true, desc = "Quit" })
 vim.keymap.set("n", "<leader>Q", [[:q!<cr>]], { silent = true, desc = "Force quit" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+vim.keymap.set("t", "<C-q>", [[<C-\><C-n>]], { desc = "Exit TERMINAL mode" })
 
 vim.keymap.set("n", "<leader><", function()
 	vim.lsp.buf.document_highlight()
