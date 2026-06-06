@@ -1,5 +1,5 @@
 return {
-	dir = "/home/throskam/Projects/scratchpad.nvim",
+	"throskam/scratchpad.nvim",
 	keys = {
 		{
 			"<leader>pp",
