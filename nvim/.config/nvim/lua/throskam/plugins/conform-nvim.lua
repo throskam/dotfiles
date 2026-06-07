@@ -15,7 +15,9 @@ return {
 				javascript = { "prettierd" },
 				typescript = { "prettierd" },
 				typescriptreact = { "prettierd" },
-				markdown = { "mdformat" },
+				markdown = { "prettierd" },
+				yaml = { "yamlfmt" },
+				sh = { "shfmt" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
