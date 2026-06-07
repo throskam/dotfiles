@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"mason-org/mason-lspconfig.nvim",
 		-- Useful status updates for LSP.
-		{ "j-hui/fidget.nvim", tag = "legacy", opts = {} },
+		{ "j-hui/fidget.nvim", opts = {} },
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
@@ -33,28 +33,46 @@ return {
 				-- Improve default nvim mappings
 				nmap("gd", vim.lsp.buf.definition, "Goto definition")
 
-				-- Goto
-				nmap("<leader>lgi", vim.lsp.buf.implementation, "Goto implementation")
-				nmap("<leader>lgt", vim.lsp.buf.type_definition, "Goto type definition")
-				nmap("<leader>lgd", vim.lsp.buf.declaration, "Goto declaration")
-
 				-- LSP features
-				nmap("<leader>lrn", vim.lsp.buf.rename, "Rename variable under the cursor")
-				nmap("<leader>lca", vim.lsp.buf.code_action, "Run code action")
-				nmap("<leader>lk", vim.lsp.buf.signature_help, "Signature documentation")
-				nmap("<leader>lgq", function()
-					vim.lsp.buf.format({ async = false })
-				end, "Format Buffer")
-				vim.keymap.set("n", "<leader>lih", function()
-					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-				end, { desc = "Toggle Inlay Hints" })
+				local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+				if client and client:supports_method("textDocument/formatting") then
+					vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+						vim.lsp.buf.format({ bufnr = bufnr, async = false })
+					end, {
+						desc = "Format buffer",
+					})
+				end
+
+				if client and client:supports_method("textDocument/inlayHint") then
+					vim.api.nvim_buf_create_user_command(bufnr, "InlayHintsToggle", function()
+						vim.lsp.inlay_hint.enable(
+							not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }),
+							{ bufnr = bufnr }
+						)
+					end, {
+						desc = "Toggle inlay hints",
+					})
+				end
 
 				-- Workspaces
-				nmap("<leader>lwa", vim.lsp.buf.add_workspace_folder, "Workspace add folder")
-				nmap("<leader>lwr", vim.lsp.buf.remove_workspace_folder, "Workspace remove folder")
-				nmap("<leader>lwl", function()
+				vim.api.nvim_buf_create_user_command(bufnr, "LspWorkspaceAdd", function()
+					vim.lsp.buf.add_workspace_folder()
+				end, {
+					desc = "Add workspace folder",
+				})
+
+				vim.api.nvim_buf_create_user_command(bufnr, "LspWorkspaceRemove", function()
+					vim.lsp.buf.remove_workspace_folder()
+				end, {
+					desc = "Remove workspace folder",
+				})
+
+				vim.api.nvim_buf_create_user_command(bufnr, "LspWorkspaceList", function()
 					vim.print(vim.lsp.buf.list_workspace_folders())
-				end, "Workspace list folders")
+				end, {
+					desc = "List workspace folders",
+				})
 			end,
 		})
 	end,

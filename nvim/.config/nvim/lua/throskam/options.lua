@@ -56,5 +56,9 @@ vim.opt.clipboard = "unnamedplus"
 -- Minimum number of line above and below cursor
 vim.opt.scrolloff = 7
 
--- Set the leqder to ","
+-- Set the leader to ","
 vim.g.mapleader = ","
+
+-- Enable fold but open all by default
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99

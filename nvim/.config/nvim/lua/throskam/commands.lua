@@ -23,9 +23,17 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_user_command("Base64Encode", function(opts)
-	vim.cmd("c<c-r>=system('base64',          @\")<cr><esc>")
-end, { range = true, desc = "Encode Base64 text" })
+	if opts.range == 2 then
+		vim.cmd("'<,'>!base64")
+	else
+		vim.cmd("%!base64")
+	end
+end, { range = true, desc = "Encode text to base64" })
 
 vim.api.nvim_create_user_command("Base64Decode", function(opts)
-	vim.cmd("c<c-r>=system('base64 --decode', @\")<cr><esc>")
-end, { range = true, desc = "Decode Base64 text" })
+	if opts.range == 2 then
+		vim.cmd("'<,'>!base64 -d")
+	else
+		vim.cmd("%!base64 -d")
+	end
+end, { range = true, desc = "Decode text from base64" })

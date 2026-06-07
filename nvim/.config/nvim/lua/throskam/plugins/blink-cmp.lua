@@ -1,17 +1,18 @@
+-- Completion
 return {
 	"saghen/blink.cmp",
 	dependencies = {
+		"saghen/blink.lib",
 		"L3MON4D3/LuaSnip",
 	},
-	version = "v0.10.0",
+	build = function()
+		require("blink.cmp").build():pwait()
+	end,
 	opts = {
-		keymap = { preset = "default" },
-		snippets = { preset = "luasnip" },
 		appearance = {
 			use_nvim_cmp_as_default = true,
 			nerd_font_variant = "mono",
 		},
-		signature = { enabled = true },
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer", "markdown" },
 			providers = {
@@ -22,6 +23,12 @@ return {
 				},
 			},
 		},
+		cmdline = {
+			completion = {
+				menu = { auto_show = true },
+			},
+		},
+		snippets = { preset = "luasnip" },
+		signature = { enabled = true },
 	},
-	opts_extend = { "sources.default" },
 }

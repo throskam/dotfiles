@@ -82,10 +82,10 @@ return {
 					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 				end
 
-				nmap("<leader>fr", builtin.lsp_references, "Search LSP references")
+				-- Improve default nvim mappings
+				nmap("grr", builtin.lsp_references, "Search LSP references")
+
 				nmap("<leader>fd", builtin.diagnostics, "Search diagnostics")
-				nmap("<leader>fbs", builtin.lsp_document_symbols, "Search buffer symbols")
-				nmap("<leader>fws", builtin.lsp_dynamic_workspace_symbols, "Search workspace symbols")
 			end,
 		})
 	end,
