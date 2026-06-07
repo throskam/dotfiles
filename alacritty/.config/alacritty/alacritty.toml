@@ -5,3 +5,5 @@ import = [
 [font]
 normal.family = "SauceCodePro NFM"
 
+[terminal]
+ osc52 = "CopyPaste"
